@@ -62,7 +62,11 @@ func (a *Authenticator) handleCallback(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	idToken, err := a.provider.Verifier().Verify(a.ctx, rawIDToken)
+	oidcConfig := &oidc.Config{
+		ClientID: clientID,
+	}
+
+	idToken, err := a.provider.Verifier(oidcConfig).Verify(a.ctx, rawIDToken)
 	if err != nil {
 		http.Error(w, "Failed to verify ID Token: "+err.Error(), http.StatusInternalServerError)
 		return

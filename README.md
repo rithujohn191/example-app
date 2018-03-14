@@ -12,6 +12,6 @@ GOOGLE_OAUTH2_CLIENT_SECRET
 2. Run the example and navigate to http://127.0.0.1:5556.
 
 ```
-go run example.go
+go run server.go
 ```
 You will be prompted to login via the provider if you have not done so already. If the login in successful the API will send a response containing the access token to the example application which will be displayed.
